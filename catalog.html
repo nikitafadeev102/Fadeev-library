@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог книг</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="catalog.html">Каталог</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </nav>
+        <div class="search-bar">
+            <input type="text" placeholder="Поиск...">
+            <button>Искать</button>
+        </div>
+    </header>
+    
+    <main class="catalog">
+        <!-- Боковой блок фильтров -->
+        <div class="filters">
+            <h2>Фильтры</h2>
+            <div class="filters_list">
+                <div class="filter-item">
+                    <label for="price-min">Цена от:</label>
+                    <input type="number" id="price-min" value="0" min="0" step="500">
+                    <label for="price-max">Цена до:</label>
+                    <input type="number" id="price-max" value="10000" max="10000" step="500">
+                </div>
+                <div class="filter-item">
+                    <label for="release-year-min">Год от:</label>
+                    <input type="number" id="release-year-min" value="1900" min="0" step="1">
+                    <label for="release-year-max">Год по:</label>
+                    <input type="number" id="release-year-max" value="2000" max="2025" step="1">
+                </div>
+            </div>
+            <button onclick="filterProducts()">Применить</button>
+        </div>
+
+        <!-- Список товаров -->
+        <section class="products" id="product-list">
+            <!-- Товары будут отображаться здесь -->
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Интернет-магазин книг А.А. Фадеева. Все права защищены.</p>
+        <p>Социальные сети: <a href="#">ВКонтакте</a> | <a href="#">Одноклассники</a> | <a href="#">WhatsApp</a></p>
+    </footer>
+    <script>
+        const products = [
+            { name: 'Молодая гвардия', price: 5000, year: 1946, img: 'books/молодая-гвардия.jpg' },
+            { name: 'Разгром (сборник)', price: 3000, year: 1926, img: 'books/разгром.jpg' },
+            { name: 'Метелица', price: 2500, year: 1937, img: 'books/метелица.jpg' },
+            { name: 'Сашко', price: 2500, year: 1985, img: 'books/сашко.jpg' },
+            { name: 'Последний из Удэге', price: 3500, year: 1941, img: 'books/Последний из Удэге.jpg' },
+            { name: 'Разлив', price: 1500, year: 1923, img: 'books/Разлив.jpg' },
+            { name: 'Пташка', price: 1000, year: 1935, img: 'books/Пташка.jpg' },
+            { name: '...Повесть нашей юности', price: 2000, year: 1987, img: 'books/…Повесть нашей юности.jpg' },
+        ];
+
+        function displayProducts(filteredProducts = products) {
+            const productList = document.getElementById('product-list');
+            productList.innerHTML = '';
+            filteredProducts.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.classList.add('product-card');
+                productCard.innerHTML = `
+            <img src="${product.img}" alt="${product.name}">
+            <div class="product-info">
+                <h3>${product.name}</h3>
+                <p>Цена: ${product.price} руб</p>
+                <p>Год выпуска: ${product.year}</p>
+            </div>
+            <button class="buy-button">Купить</button>
+        `;
+                productList.appendChild(productCard);
+            });
+        }
+
+        // Фильтры
+        function filterProducts() {
+            const priceMin = parseInt(document.getElementById('price-min').value, 10);
+            const priceMax = parseInt(document.getElementById('price-max').value, 10);
+            const yearMin = parseInt(document.getElementById('release-year-min').value, 10);
+            const yearMax = parseInt(document.getElementById('release-year-max').value, 10);
+
+            const filteredProducts = products.filter(product => {
+                return product.price >= priceMin && product.price <= priceMax &&
+                       product.year >= yearMin && product.year <= yearMax;
+            });
+
+            displayProducts(filteredProducts);
+        }
+
+        // Инициализация отображения товаров
+        displayProducts();
+    </script>
+</body>
+</html>

@@ -22,7 +22,6 @@
     </header>
     
     <main class="catalog">
-        <!-- Боковой блок фильтров -->
         <div class="filters">
             <h2>Фильтры</h2>
             <div class="filters_list">
@@ -42,9 +41,7 @@
             <button onclick="filterProducts()">Применить</button>
         </div>
 
-        <!-- Список товаров -->
         <section class="products" id="product-list">
-            <!-- Товары будут отображаться здесь -->
         </section>
     </main>
     <footer>
@@ -82,7 +79,6 @@
             });
         }
 
-        // Фильтры
         function filterProducts() {
             const priceMin = parseInt(document.getElementById('price-min').value, 10);
             const priceMax = parseInt(document.getElementById('price-max').value, 10);
@@ -97,7 +93,6 @@
             displayProducts(filteredProducts);
         }
 
-        // Инициализация отображения товаров
         displayProducts();
     </script>
 </body>

@@ -187,12 +187,13 @@ footer a:hover {
 
     .catalog {
         flex-direction: column;
+        padding: 10px;
     }
 
     .filters {
         width: 100%;
         margin-bottom: 20px;
-        padding: 10px; /* Уменьшаем отступы */
+        padding: 5px; /* Уменьшаем отступы */
     }
 
     .product-card {

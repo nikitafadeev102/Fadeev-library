@@ -161,6 +161,75 @@ footer a:hover {
     color: #e18c00;
 }
 
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    header nav ul li {
+        margin: 5px 0;
+    }
+
+    header .search-bar {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    header .search-bar input {
+        width: calc(100% - 60px);
+    }
+
+    .catalog {
+        flex-direction: column;
+    }
+
+    .filters {
+        width: 100%;
+        margin-bottom: 20px;
+        padding: 10px; /* Уменьшаем отступы */
+    }
+
+    .product-card {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .filters h2 {
+        font-size: 1.2em;
+    }
+
+    .filters .filter-item label {
+        font-size: 0.9em;
+    }
+
+    .filters .filter-item input {
+        font-size: 0.9em;
+    }
+
+    .filters button {
+        font-size: 0.9em;
+    }
+
+    .product-info h3 {
+        font-size: 1.2em;
+    }
+
+    .product-info p {
+        font-size: 0.9em;
+    }
+
+    .product-card .buy-button {
+        font-size: 0.9em;
+    }
+}
+
 .catalog {
     display: flex;
     padding: 20px 100px;

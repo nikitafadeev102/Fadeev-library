@@ -16,8 +16,8 @@
             </ul>
         </nav>
         <div class="search-bar">
-            <input type="text" placeholder="Поиск...">
-            <button>Искать</button>
+            <input type="text" id="search-input" placeholder="Поиск...">
+            <button id="search-input">Искать</button>
         </div>
     </header>
     <main>
@@ -91,6 +91,14 @@
             });
         }
         displayProducts();
+
+        // Обработка клика по кнопке "Искать"
+document.getElementById('search-button').addEventListener('click', () => {
+    const searchQuery = document.getElementById('search-input').value.trim(); // Получаем текст из строки поиска
+    if (searchQuery) {
+        window.location.href = `catalog.html?search=${encodeURIComponent(searchQuery)}`;
+    }
+});
     </script>
 </body>
 </html>

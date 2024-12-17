@@ -365,6 +365,15 @@ footer a:hover {
     background-color: #e18c00;
 }
 
+.notification {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
 .contact-info,
 .contact-form {
     margin: 20px auto;

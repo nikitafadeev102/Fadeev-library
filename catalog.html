@@ -16,8 +16,8 @@
             </ul>
         </nav>
         <div class="search-bar">
-            <input type="text" placeholder="Поиск...">
-            <button>Искать</button>
+            <input type="text" id="search-input" placeholder="Поиск...">
+            <button id="search-input">Искать</button>
         </div>
     </header>
     
@@ -115,6 +115,29 @@
         document.querySelectorAll('.buy-button').forEach(button => {
             button.addEventListener('click', () => showNotificationInCard(button));
         });
+document.getElementById('search-button').addEventListener('click', () => {
+    const searchQuery = document.getElementById('search-input').value.trim(); // Получаем текст из строки поиска
+    if (searchQuery) {
+        window.location.href = `catalog.html?search=${encodeURIComponent(searchQuery)}`;
+    }
+});
+function getSearchQuery() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('search');
+}
+function filterProductsBySearch() {
+    const searchQuery = getSearchQuery();
+    if (searchQuery) {
+        const filteredProducts = products.filter(product =>
+            product.name.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+        displayProducts(filteredProducts); // Отображаем отфильтрованные товары
+    } else {
+        displayProducts(products); // Показываем все товары, если запрос отсутствует
+    }
+}
+
+filterProductsBySearch();
     </script>
 </body>
 </html>

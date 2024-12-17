@@ -18,8 +18,8 @@
             </ul>
         </nav>
         <div class="search-bar">
-            <input type="text" placeholder="Поиск...">
-            <button>Искать</button>
+            <input type="text" id="search-input" placeholder="Поиск...">
+            <button id="search-input">Искать</button>
         </div>
     </header>
 
@@ -56,6 +56,15 @@
         <p>&copy; 2024 Интернет-магазин книг А.А. Фадеева. Все права защищены.</p>
         <p>Социальные сети: <a href="#">ВКонтакте</a> | <a href="#">Одноклассники</a> | <a href="#">WhatsApp</a></p>
     </footer>
+    <script>
+        // Обработка клика по кнопке "Искать"
+document.getElementById('search-button').addEventListener('click', () => {
+    const searchQuery = document.getElementById('search-input').value.trim(); // Получаем текст из строки поиска
+    if (searchQuery) {
+        window.location.href = `catalog.html?search=${encodeURIComponent(searchQuery)}`;
+    }
+});
+    </script>
 </body>
 
 </html>

@@ -48,6 +48,7 @@
         <p>&copy; 2024 Интернет-магазин книг А.А. Фадеева. Все права защищены.</p>
         <p>Социальные сети: <a href="#">ВКонтакте</a> | <a href="#">Одноклассники</a> | <a href="#">WhatsApp</a></p>
     </footer>
+    <div id="notification">Товар добавлен в корзину!</div>
     <script>
         const products = [
             { name: 'Молодая гвардия', price: 5000, year: 1946, img: 'books/молодая-гвардия.jpg' },
@@ -94,6 +95,18 @@
         }
 
         displayProducts();
+
+        function showNotification() {
+            const notification = document.getElementById('notification');
+            notification.style.display = 'block';
+
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 2000);
+        }
+        document.querySelectorAll('.buy-button').forEach(button => {
+            button.addEventListener('click', showNotification);
+        });
     </script>
 </body>
 </html>

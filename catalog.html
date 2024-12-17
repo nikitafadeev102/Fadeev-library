@@ -42,7 +42,6 @@
         </div>
 
         <section class="products" id="product-list">
-            <div id="notification">Товар добавлен в корзину!</div>
         </section>
     </main>
     <footer>
@@ -96,8 +95,17 @@
 
         displayProducts();
 
-        function showNotification() {
-            const notification = document.getElementById('notification');
+        function showNotificationInCard(button) {
+            const productCard = button.closest('.product-card');
+            let notification = productCard.querySelector('.notification');
+
+            if (!notification) {
+                notification = document.createElement('div');
+                notification.classList.add('notification');
+                notification.textContent = 'Товар добавлен в корзину!';
+                productCard.appendChild(notification);
+            }
+
             notification.style.display = 'block';
 
             setTimeout(() => {
@@ -105,7 +113,7 @@
             }, 2000);
         }
         document.querySelectorAll('.buy-button').forEach(button => {
-            button.addEventListener('click', showNotification);
+            button.addEventListener('click', () => showNotificationInCard(button));
         });
     </script>
 </body>
